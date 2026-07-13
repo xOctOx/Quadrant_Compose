@@ -29,12 +29,45 @@ class MainActivity : ComponentActivity() {
         setContent {
             QuadrantComposeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    QuadrantCompose(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
             }
+        }
+    }
+}
+
+@Composable
+fun QuadrantCompose(modifier: Modifier = Modifier) {
+    Column(modifier = modifier.fillMaxSize()) {
+        Row(modifier = Modifier.weight(1f)) {
+            Quadrant(
+                title = "Text composable",
+                description = "Displays text and follows the recommended Material Design guidelines.",
+                backgroundColor = Color(0xFFEADDFF),
+                modifier = Modifier.weight(1f)
+            )
+            Quadrant(
+                title = "Image composable",
+                description = "Creates a composable that lays out and draws a given Painter class object.",
+                backgroundColor = Color(0xFFD0BCFF),
+                modifier = Modifier.weight(1f)
+            )
+        }
+        Row(modifier = Modifier.weight(1f)) {
+            Quadrant(
+                title = "Row composable",
+                description = "A layout composable that places its children in a horizontal sequence.",
+                backgroundColor = Color(0xFFB69DF8),
+                modifier = Modifier.weight(1f)
+            )
+            Quadrant(
+                title = "Column composable",
+                description = "A layout composable that places its children in a vertical sequence.",
+                backgroundColor = Color(0xFFF6EDFF),
+                modifier = Modifier.weight(1f)
+            )
         }
     }
 }
@@ -66,11 +99,10 @@ fun Quadrant(
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun QuadrantComposePreview() {
     QuadrantComposeTheme {
-        Greeting("Android")
+        QuadrantCompose()
     }
 }
